@@ -1,6 +1,5 @@
 ###This code will not work in repl.it as there is no access to the colorgram package here.###
 ##We talk about this in the video tutorials##
-import colorgram
 import turtle as t
 import random
 from turtle import Turtle, Screen
@@ -27,29 +26,46 @@ tim = Turtle()
 tim.speed(0)
 t.colormode(255)
 
-dot_num = 100
+
+# tim.up()
+# tim.setheading(225)
+# tim.forward(300)
+# tim.dot(20, random.choice(color_list))
+# tim.setheading(360)
+
+# for _ in range(10):
+#     tim.forward(50)
+#     tim.dot(20, random.choice(color_list))
+
+# tim.setheading(90)
+# tim.forward(40)
+# tim.setheading(180)
+# tim.forward(500)
+# tim.dot(20, random.choice(color_list))
+# tim.setheading(360)
+
+# for _ in range(10):
+#     tim.forward(50)
+#     tim.dot(20, random.choice(color_list))
 
 
+### my implementation of project 18
 tim.up()
 tim.setheading(225)
 tim.forward(300)
-tim.dot(20, random.choice(color_list))
-tim.setheading(360)
 
 for _ in range(10):
-    tim.forward(50)
-    tim.dot(20, random.choice(color_list))
+    for i in range(10):
+        tim.dot(20, random.choice(color_list))
+        tim.setheading(0)
+        tim.forward(50)
 
-tim.setheading(90)
-tim.forward(40)
-tim.setheading(180)
-tim.forward(500)
-tim.dot(20, random.choice(color_list))
-tim.setheading(360)
+    tim.setheading(90)
+    tim.forward(40)
+    tim.setheading(180)
+    tim.forward(500)
 
-for _ in range(10):
-    tim.forward(50)
-    tim.dot(20, random.choice(color_list))
+
 
 
 s = Screen()
