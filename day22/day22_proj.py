@@ -24,6 +24,8 @@ ball = Ball()
 game_on = True
 while game_on:
     s.update()
+    time.sleep(0.1)
+    ball.move()
 
 
 s.exitonclick()
