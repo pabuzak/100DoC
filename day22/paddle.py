@@ -18,8 +18,10 @@ class Paddle:
         p = self.paddle[0]
         y = p.ycor() + 20
         p.goto(y=y, x=p.xcor())
+        self.pos = (p.xcor(), y)
 
     def down(self):
         p = self.paddle[0]
         y = p.ycor() - 20
         p.goto(y=y, x=p.xcor())
+        self.pos = (p.xcor(), y)
