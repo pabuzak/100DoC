@@ -26,6 +26,14 @@ while game_on:
     s.update()
     time.sleep(0.1)
     ball.move()
+    if ball.ycor() > 275 or ball.ycor() < -275:
+        ball.bounce_y()
+
+
+
+    #detect collision with r_paddle
+    if ball.distance(r_pad) < 50 and ball.xcor() > 340:
+        print("made contact")
 
 
 s.exitonclick()
