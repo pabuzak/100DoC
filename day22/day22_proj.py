@@ -1,7 +1,9 @@
 from turtle import Turtle, Screen
 from paddle import Paddle
 from ball import Ball
+from scoreboard import ScoreBoard
 import time
+
 
 s = Screen()
 s.setup(width=800, height=600)
@@ -19,12 +21,13 @@ s.onkey(key="w", fun=l_pad.up)
 s.onkey(key="s", fun=l_pad.down)
 
 ball = Ball()
+scoreboard = ScoreBoard()
 
 
 game_on = True
 while game_on:
     s.update()
-    time.sleep(0.1)
+    time.sleep(ball.time)
     ball.move()
 
     #detect collision with ceiling and bounce
@@ -33,11 +36,18 @@ while game_on:
 
 
 
-    #detect collision with r_paddle
-    if ball.distance(x=r_pad.pos[0], y=r_pad.pos[1]) < 50 and ball.xcor() > 330 or ball.distance(x=l_pad.pos[0], y=l_pad.pos[1]) < 50 and ball.xcor() > -600:
+    #detect collision with paddles
+    if ball.distance(x=r_pad.pos[0], y=r_pad.pos[1]) < 50 and ball.xcor() > 330 or ball.distance(x=l_pad.pos[0], y=l_pad.pos[1]) < 30 and ball.xcor() > -400:
         ball.bounce_x()
+        
 
-    if ball.xcor() > 400 or ball.xcor() < -400:
-        ball.setpos(0,0)
+    if ball.xcor() > 400:
+        ball.reset_position()
+        scoreboard.l_point()
+
+    if ball.xcor() < -400:
+        ball.reset_position()
+        scoreboard.r_point()
+
 
 s.exitonclick()

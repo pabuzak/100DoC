@@ -11,6 +11,7 @@ class Ball(Turtle):
         self.setposition(x=0, y=0)
         self.ymovement = 10
         self.xmovement = 10
+        self.time = 0.1
 
     def move(self):
         y = self.ycor() + self.ymovement
@@ -23,3 +24,9 @@ class Ball(Turtle):
     
     def bounce_x(self):
         self.xmovement  *= -1
+        self.time *= 0.9
+    
+    def reset_position(self):
+        self.goto(0, 0)
+        self.time = 0.1
+        self.bounce_x()
