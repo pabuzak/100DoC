@@ -15,10 +15,10 @@ r_pad = Paddle((350, 0))
 l_pad = Paddle((-350, 0))
 
 s.listen()
-s.onkey(key="Up", fun=r_pad.up)
-s.onkey(key="Down", fun=r_pad.down)
-s.onkey(key="w", fun=l_pad.up)
-s.onkey(key="s", fun=l_pad.down)
+s.onkeypress(key="Up", fun=r_pad.up)
+s.onkeypress(key="Down", fun=r_pad.down)
+s.onkeypress(key="w", fun=l_pad.up)
+s.onkeypress(key="s", fun=l_pad.down)
 
 ball = Ball()
 scoreboard = ScoreBoard()
@@ -37,7 +37,7 @@ while game_on:
 
 
     #detect collision with paddles
-    if ball.distance(x=r_pad.pos[0], y=r_pad.pos[1]) < 50 and ball.xcor() > 330 or ball.distance(x=l_pad.pos[0], y=l_pad.pos[1]) < 30 and ball.xcor() > -400:
+    if ball.distance(x=r_pad.pos[0], y=r_pad.pos[1]) < 50 and ball.xcor() > 330 or ball.distance(x=l_pad.pos[0], y=l_pad.pos[1]) < 40 and ball.xcor() > -400:
         ball.bounce_x()
         
 
