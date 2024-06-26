@@ -27,3 +27,9 @@ class CarManager(Turtle):
         xcor = self.turtle.xcor() - STARTING_MOVE_DISTANCE
         ycor = self.turtle.ycor()
         self.turtle.goto(x=xcor, y = ycor)
+
+    def positionx(self):
+        return self.turtle.xcor()
+    
+    def positiony(self):
+        return self.turtle.ycor()
