@@ -14,11 +14,26 @@ player = Player()
 screen.listen()
 screen.onkeypress(key="Up", fun=player.move)
 
+# scoreboard
+score = Scoreboard()
+
+# cars list
 cars = []
 
+finish_count = 0
 count = 6
 game_is_on = True
 while game_is_on:
+
+    # detect if player has finished
+    if player.finish():
+        finish_count += 1
+        # update move to increment by 10
+        for car in cars:
+            car.finish(finish_count)
+
+        score.update_level()
+
     time.sleep(0.1)
     screen.update()
 
@@ -26,6 +41,7 @@ while game_is_on:
     if count == 6:
         car = CarManager()
         cars.append(car)
+        car.finish(finish_count)
         count = 0
 
     # move all cars
@@ -36,11 +52,9 @@ while game_is_on:
     for car in cars:
         if player.distance(x=car.positionx(), y=car.positiony()) < 20:
             game_is_on = False
-    
-    # detect if player has finished
-    if player.finish():
-        pass
+            score.game_over()
 
+            
     count += 1
         
 

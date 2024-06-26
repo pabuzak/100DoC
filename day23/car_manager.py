@@ -9,6 +9,7 @@ MOVE_INCREMENT = 10
 
 class CarManager(Turtle):
     def __init__(self):
+        self.distance = STARTING_MOVE_DISTANCE
         self.turtle = Turtle()
         self.turtle.penup()
         self.turtle.shape('square')
@@ -19,17 +20,19 @@ class CarManager(Turtle):
         self.turtle.shapesize(stretch_wid=1, stretch_len=2)
 
     def move(self):
-        xcor = self.turtle.xcor() - 10
+        xcor = self.turtle.xcor() - self.distance
         ycor = self.turtle.ycor()
         self.turtle.goto(x=xcor, y=ycor)
-
-    def start(self):
-        xcor = self.turtle.xcor() - STARTING_MOVE_DISTANCE
-        ycor = self.turtle.ycor()
-        self.turtle.goto(x=xcor, y = ycor)
 
     def positionx(self):
         return self.turtle.xcor()
     
     def positiony(self):
         return self.turtle.ycor()
+    
+    def finish(self, count):
+        if count == 0:
+            pass
+        else:
+            self.distance = MOVE_INCREMENT * count
+        
