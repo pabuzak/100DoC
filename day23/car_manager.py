@@ -9,13 +9,21 @@ MOVE_INCREMENT = 10
 
 class CarManager(Turtle):
     def __init__(self):
-        turtle = Turtle()
-        turtle.penup()
-        turtle.shape('square')
-        turtle.color("black")
-        turtle.setheading(180)
-        turtle.speed(1)
-        turtle.goto(x=310, y=0)
-        
-        while turtle.xcor() > -300:
-            turtle.forward(MOVE_INCREMENT)
+        self.turtle = Turtle()
+        self.turtle.penup()
+        self.turtle.shape('square')
+        self.turtle.color(random.choices(COLORS))
+        self.turtle.setheading(180)
+        self.turtle.speed(1)
+        self.turtle.goto(x=310, y=random.randrange(-250, 250))
+        self.turtle.shapesize(stretch_wid=1, stretch_len=2)
+
+    def move(self):
+        xcor = self.turtle.xcor() - 10
+        ycor = self.turtle.ycor()
+        self.turtle.goto(x=xcor, y=ycor)
+
+    def start(self):
+        xcor = self.turtle.xcor() - STARTING_MOVE_DISTANCE
+        ycor = self.turtle.ycor()
+        self.turtle.goto(x=xcor, y = ycor)
